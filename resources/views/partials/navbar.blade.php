@@ -6,7 +6,8 @@
             <div class="site-navigation">
                 <div class="row g-0 align-items-center">
                     <div class="col-2">
-                        <a href="index.html" class="logo m-0 float-start">Blogy<span class="text-primary">.</span></a>
+                        <a href="{{ route('home')}}" class="logo m-0 float-start">Blogy<span
+                                class="text-primary">.</span></a>
                     </div>
                     <div class="col-8 text-center">
                         <form action="#" class="search-form d-inline-block d-lg-none">
@@ -15,16 +16,16 @@
                         </form>
 
                         <ul class="js-clone-nav d-none d-lg-inline-block text-start site-menu mx-auto">
-                            <li><a href="index.html">Home</a></li>
+                            <li><a href="{{ route('home')}}">Home</a></li>
                             <li class="has-children active">
-                                <a href="category.html">Pages</a>
+                                <a href="{{ route('category')}}">Pages</a>
                                 <ul class="dropdown">
-                                    <li><a href="search-result.html">Search Result</a></li>
-                                    <li><a href="blog.html">Blog</a></li>
-                                    <li><a href="single.html">Blog Single</a></li>
-                                    <li><a href="category.html">Category</a></li>
-                                    <li class="active"><a href="about.html">About</a></li>
-                                    <li><a href="contact.html">Contact Us</a></li>
+                                    <li><a href="{{ route('search-result')}}">Search Result</a></li>
+                                    <li><a href="{{ route('blog')}}">Blog</a></li>
+                                    <li><a href="{{ route('single')}}">Blog Single</a></li>
+                                    <li><a href="{{ route('category')}}">Category</a></li>
+                                    <li class="active"><a href="{{ route('about')}}">About</a></li>
+                                    <li><a href="{{ route('contact')}}">Contact Us</a></li>
                                     <li><a href="#">Menu One</a></li>
                                     <li><a href="#">Menu Two</a></li>
                                     <li class="has-children">
@@ -37,9 +38,9 @@
                                     </li>
                                 </ul>
                             </li>
-                            <li><a href="category.html">Culture</a></li>
-                            <li><a href="category.html">Business</a></li>
-                            <li><a href="category.html">Politics</a></li>
+                            <li><a href="{{ route('category')}}">Culture</a></li>
+                            <li><a href="{{ route('category')}}">Business</a></li>
+                            <li><a href="{{ route('category')}}">Politics</a></li>
                         </ul>
                     </div>
                     <div class="col-2 text-end">
