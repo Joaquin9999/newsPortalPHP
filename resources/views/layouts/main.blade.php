@@ -33,17 +33,17 @@
     </div>
 
 
-    <script src="js/bootstrap.bundle.min.js"></script>
-    <script src="js/tiny-slider.js"></script>
+    <script src="{{ asset('backend/assets plantilla news/js/bootstrap.bundle.min.js')}}"></script>
+    <script src="{{ asset('backend/assets plantilla news/js/tiny-slider.js')}}"></script>
 
-    <script src="js/flatpickr.min.js"></script>
+    <script src="{{ asset('backend/assets plantilla news/js/flatpickr.min.js')}}"></script>
 
 
-    <script src="js/aos.js"></script>
-    <script src="js/glightbox.min.js"></script>
-    <script src="js/navbar.js"></script>
-    <script src="js/counter.js"></script>
-    <script src="js/custom.js"></script>
+    <script src="{{ asset('backend/assets plantilla news/js/aos.js')}}"></script>
+    <script src="{{ asset('backend/assets plantilla news/js/glightbox.min.js')}}"></script>
+    <script src="{{ asset('backend/assets plantilla news/js/navbar.js')}}"></script>
+    <script src="{{ asset('backend/assets plantilla news/js/counter.js')}}"></script>
+    <script src="{{ asset('backend/assets plantilla news/js/custom.js')}}"></script>
 
 </body>
 

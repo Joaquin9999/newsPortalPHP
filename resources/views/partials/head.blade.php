@@ -1,5 +1,4 @@
 <!-- resources/views/partials/head.blade.php -->
-<!-- resources/views/partials/head.blade.php -->
 
 <head>
     <meta charset="utf-8">
@@ -18,11 +17,11 @@
     <link rel="stylesheet" href="{{ asset('fonts/flaticon/font/flaticon.css') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
 
-    <link rel="stylesheet" href="{{ asset('css/tiny-slider.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/aos.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/glightbox.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/flatpickr.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('backend/assets plantilla news/css/tiny-slider.css') }}">
+    <link rel="stylesheet" href="{{ asset('backend/assets plantilla news/css/aos.css') }}">
+    <link rel="stylesheet" href="{{ asset('backend/assets plantilla news/css/glightbox.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('backend/assets plantilla news/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('backend/assets plantilla news/css/flatpickr.min.css') }}">
 
     <title>Blogy &mdash; Free Bootstrap 5 Website Template by Untree.co</title>
 </head>
