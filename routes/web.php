@@ -7,6 +7,7 @@ use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\SearchController;
+use App\Http\Controllers\SingleController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -34,6 +35,9 @@ Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 
 //Ruta para pag Contact
 Route::get('/search-result', [SearchController::class, 'index'])->name('search-result');
+
+//Ruta para pag Single
+Route::get('/single', [SingleController::class, 'index'])->name('single');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
