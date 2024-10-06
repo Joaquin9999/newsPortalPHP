@@ -23,5 +23,5 @@
     <link rel="stylesheet" href="{{ asset('backend/assets plantilla news/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('backend/assets plantilla news/css/flatpickr.min.css') }}">
 
-    <title>Blogy &mdash; Free Bootstrap 5 Website Template by Untree.co</title>
+    <title>CiberTrends</title>
 </head>

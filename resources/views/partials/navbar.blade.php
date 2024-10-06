@@ -6,12 +6,13 @@
             <div class="site-navigation">
                 <div class="row g-0 align-items-center">
                     <div class="col-2">
-                        <a href="{{ route('home')}}" class="logo m-0 float-start">Blogy<span
-                                class="text-primary">.</span></a>
+                        <a href="{{ route('home')}}" class="logo m-0 float-start">CiberTrends<span
+                                class="text-primary;">.</span></a>
                     </div>
                     <div class="col-8 text-center">
-                        <form action="#" class="search-form d-inline-block d-lg-none">
-                            <input type="text" class="form-control" placeholder="Search...">
+                        <form action="#" class="search-form d-inline-block d-lg-none" style="width: 50%;margin-left: 100px;">
+                            <input type="text" class="form-control" placeholder="Search..."
+                                style="width: 100%; font-size: 14px;">
                             <span class="bi-search"></span>
                         </form>
 
@@ -41,6 +42,7 @@
                             <li><a href="{{ route('category')}}">Culture</a></li>
                             <li><a href="{{ route('category')}}">Business</a></li>
                             <li><a href="{{ route('category')}}">Politics</a></li>
+                            <li><a href="{{ route('login')}}">Login</a></li>
                         </ul>
                     </div>
                     <div class="col-2 text-end">
