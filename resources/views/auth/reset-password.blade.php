@@ -1,4 +1,11 @@
 <x-guest-layout>
+<div class="text-center mb-8">
+        <!-- Añadido un div para centrar el título -->
+        <a href="{{ route('home') }}" class="m-0 text-[#214252] dark:text-white"
+            style="font-size: 3rem; font-weight: 700;">
+            Reset Password
+        </a>
+    </div>
     <form method="POST" action="{{ route('password.store') }}">
         @csrf
 
