@@ -6,54 +6,34 @@
             <div class="site-navigation">
                 <div class="row g-0 align-items-center">
                     <div class="col-2">
-                        <a href="{{ route('home')}}" class="logo m-0 float-start">CiberTrends<span
-                                class="text-primary;">.</span></a>
+                        <a href="{{ route('home')}}" class="logo m-0 float-start">CiberTrends<span class="text-primary;">.</span></a>
                     </div>
                     <div class="col-8 text-center">
-                        <form action="#" class="search-form d-inline-block d-lg-none" style="width: 50%;margin-left: 100px;">
+                        <ul class="js-clone-nav d-none d-lg-inline-block text-start site-menu mx-auto">
+                            <li><a href="{{ route('home')}}">Inicio</a></li>
+                            <li><a href="{{ route('category')}}">Ciberseguridad</a></li>
+                            <li><a href="{{ route('category')}}">Web</a></li>
+                            <li><a href="{{ route('category')}}">Software</a></li>
+                            <li><a href="{{ route('category')}}">I.A</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-2 d-flex align-items-center justify-content-end">
+                        <form action="#" class="search-form me-3" style="flex: 1; max-width: 250px; margin-left: -100px;">
                             <input type="text" class="form-control" placeholder="Search..."
                                 style="width: 100%; font-size: 14px;">
                             <span class="bi-search"></span>
                         </form>
-
-                        <ul class="js-clone-nav d-none d-lg-inline-block text-start site-menu mx-auto">
-                            <li><a href="{{ route('home')}}">Home</a></li>
-                            <li class="has-children active">
-                                <a href="{{ route('category')}}">Pages</a>
-                                <ul class="dropdown">
-                                    <li><a href="{{ route('search-result')}}">Search Result</a></li>
-                                    <li><a href="{{ route('blog')}}">Blog</a></li>
-                                    <li><a href="{{ route('single')}}">Blog Single</a></li>
-                                    <li><a href="{{ route('category')}}">Category</a></li>
-                                    <li class="active"><a href="{{ route('about')}}">About</a></li>
-                                    <li><a href="{{ route('contact')}}">Contact Us</a></li>
-                                    <li><a href="#">Menu One</a></li>
-                                    <li><a href="#">Menu Two</a></li>
-                                    <li class="has-children">
-                                        <a href="#">Dropdown</a>
-                                        <ul class="dropdown">
-                                            <li><a href="#">Sub Menu One</a></li>
-                                            <li><a href="#">Sub Menu Two</a></li>
-                                            <li><a href="#">Sub Menu Three</a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li><a href="{{ route('category')}}">Culture</a></li>
-                            <li><a href="{{ route('category')}}">Business</a></li>
-                            <li><a href="{{ route('category')}}">Politics</a></li>
-                            <li><a href="{{ route('login')}}">Login</a></li>
-                        </ul>
-                    </div>
-                    <div class="col-2 text-end">
+                        <div class="d-inline-block">
+                            <ul class="js-clone-nav d-none d-lg-inline-block text-start site-menu mx-auto">
+                                <li><a href="{{ route('login') }}">Login</a></li>
+                                <li class="mx-2">|</li>
+                                <li><a href="{{ route('register') }}">Register</a></li>
+                            </ul>
+                        </div>
                         <a href="#"
-                            class="burger ms-auto float-end site-menu-toggle js-menu-toggle d-inline-block d-lg-none light">
+                            class="burger ms-auto site-menu-toggle js-menu-toggle d-inline-block d-lg-none light">
                             <span></span>
                         </a>
-                        <form action="#" class="search-form d-none d-lg-inline-block">
-                            <input type="text" class="form-control" placeholder="Search...">
-                            <span class="bi-search"></span>
-                        </form>
                     </div>
                 </div>
             </div>
