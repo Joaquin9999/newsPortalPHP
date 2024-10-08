@@ -16,7 +16,7 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return redirect()->route('voyager.dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 // Ruta para pag About
