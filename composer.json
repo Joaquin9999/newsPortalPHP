@@ -12,6 +12,7 @@
         "laravel/breeze": "^2.2",
         "laravel/framework": "^11.9",
         "laravel/tinker": "^2.9",
+        "league/flysystem": "^3.29",
         "tcg/voyager": "^1.8"
     },
     "require-dev": {
