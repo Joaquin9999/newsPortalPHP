@@ -52,3 +52,10 @@ require __DIR__ . '/auth.php';
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });
+
+//url de cada 
+Route::get('/posts/{id}', [HomeController::class, 'show'])->name('posts.show');
+
+//url de imagenes en bd
+Route::get('/images/{filename}', [HomeController::class, 'showImage'])->name('image.show');
+
