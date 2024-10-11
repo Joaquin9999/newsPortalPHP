@@ -1,3 +1,7 @@
+@php
+    use TCG\Voyager\Facades\Voyager;
+@endphp
+
 @if(isset($dataTypeContent->{$row->field}))
     <div data-field-name="{{ $row->field }}">
         <a href="#" class="voyager-x remove-single-image" style="position:absolute;"></a>

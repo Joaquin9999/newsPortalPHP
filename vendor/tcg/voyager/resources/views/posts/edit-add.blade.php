@@ -1,4 +1,5 @@
 @php
+    use TCG\Voyager\Facades\Voyager;
     $edit = !is_null($dataTypeContent->getKey());
     $add  = is_null($dataTypeContent->getKey());
 @endphp

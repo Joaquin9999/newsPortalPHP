@@ -1,3 +1,7 @@
+@php
+    use TCG\Voyager\Facades\Voyager;
+@endphp
+
 <div class="side-menu sidebar-inverse">
     <nav class="navbar navbar-default" role="navigation">
         <div class="side-menu-container">

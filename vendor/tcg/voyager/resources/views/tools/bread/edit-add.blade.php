@@ -1,3 +1,7 @@
+@php
+    use TCG\Voyager\Facades\Voyager;
+@endphp
+
 @extends('voyager::master')
 
 @if (isset($dataType->id))
