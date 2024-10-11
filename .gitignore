@@ -4,7 +4,13 @@
 /public/hot
 /public/storage
 /storage/*.key
-/vendor
+/vendor/*
+!vendor/tcg/
+!vendor/tcg/voyager/
+!vendor/tcg/voyager/resources/
+!vendor/tcg/voyager/routes/
+!vendor/tcg/voyager/src/
+!vendor/tcg/voyager/src/Http/
 .env
 .env.backup
 .env.production
