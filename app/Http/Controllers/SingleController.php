@@ -11,7 +11,7 @@ class SingleController extends Controller
      */
     public function index()
     {
-        return view('pages.single');
+        return view('pages.post');
     }
 
     /**
