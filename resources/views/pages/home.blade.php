@@ -7,7 +7,7 @@
             <div class="row align-items-stretch retro-layout">
                 @foreach ($posts->slice(0, 6) as $post)
                     <div class="col-md-4">
-                        <a href="single.html" class="h-entry mb-30 v-height gradient">
+                        <a href="{{ route('single', $post->slug) }}" class="h-entry mb-30 v-height gradient">
                             <div class="featured-img" style="background-image: url('{{ Voyager::image($post->image) }}');">
                             </div>
                             <div class="text">
@@ -148,27 +148,30 @@
         </div>
 
         <div class="row">
-            @foreach ($posts->slice(0, 9) as $post)
-                <div class="col-lg-4 mb-4">
-                    <div class="post-entry-alt">
-                        <a href="single.html" class="img-link">
-                            <img src="{{ Voyager::image($post->image) }}" alt="Image" class="img-fluid">
-                        </a>
-                        <div class="excerpt">
-                            <h2><a href="single.html">{{ $post->title }}</a></h2>
-                            <div class="post-meta align-items-center text-left clearfix">
-                                <figure class="author-figure mb-0 me-3 float-start">
-                                    <img src="images/person_1.jpg" alt="Image" class="img-fluid">
-                                </figure>
-                                <span class="d-inline-block mt-1">By <a href="#">{{ $post->author }}</a></span>
-                                <span>&nbsp;-&nbsp; {{ $post->created_at->format('F j, Y') }}</span>
+            <div class="row">
+                @foreach ($posts->slice(0, 9) as $post)
+                    <div class="col-lg-4 mb-4">
+                        <div class="post-entry-alt">
+                            <a href="{{ route('single', $post->slug) }}" class="img-link">
+                                <img src="{{ Voyager::image($post->image) }}" alt="Image" class="img-fluid">
+                            </a>
+                            <div class="excerpt">
+                                <h2><a href="{{ route('single', $post->slug) }}">{{ $post->title }}</a></h2>
+                                <div class="post-meta align-items-center text-left clearfix">
+                                    <figure class="author-figure mb-0 me-3 float-start">
+                                        <img src="images/person_1.jpg" alt="Image" class="img-fluid"> <!-- Usa el avatar asociado al author_id -->
+                                    </figure>
+                                    <span class="d-inline-block mt-1">By <a href="#">{{ $post->author }}</a></span> <!-- Usa el nombre del autor -->
+                                    <span>&nbsp;-&nbsp; {{ $post->created_at->format('F j, Y') }}</span>
+                                </div>
+                                <p>{{ $post->excerpt }}</p>
+                                <p><a href="{{ route('single', $post->slug) }}" class="read-more">Continue Reading</a></p>
                             </div>
-                            <p>{{ $post->excerpt }}</p>
-                            <p><a href="#" class="read-more">Continue Reading</a></p>
                         </div>
                     </div>
-                </div>
-            @endforeach
+                @endforeach
+            </div>
+            
         </div>
 
     </div>
