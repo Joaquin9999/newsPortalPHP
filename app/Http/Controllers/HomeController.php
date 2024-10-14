@@ -13,13 +13,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        // Obtener todas las categorías
-        $categories = Category::with('posts')->where('slug', '<>', '')->get();
+        $posts = Post::get(); 
 
-        // Obtener todos los posts
-        $posts = Post::all(); // o puedes usar otras condiciones como ->latest() para obtener los más recientes
-
-        return view('pages.home', compact('categories', 'posts')); // Asegúrate de pasar $posts aquí
+        return view('pages.home', compact( 'posts')); 
     }
 
     /**
@@ -43,11 +39,9 @@ class HomeController extends Controller
      */
     public function show($slug)
     {
-        // Obtener el post con el slug proporcionado
         $post = Post::where('slug', $slug)->firstOrFail();
 
-        // Retornar la vista con el post específico
-        return view('pages.blog-post', compact('post'));
+        return view('pages.post', compact('post'));
     }
 
 

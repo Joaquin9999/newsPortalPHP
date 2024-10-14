@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use TCG\Voyager\Models\Post;
 
 class CategoryController extends Controller
 {
@@ -11,7 +12,9 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        return view("pages.category");
+        $posts =  Post::where('category_id', 1)->orderBy("category_id")->get();
+
+        return view("pages.category", compact('posts'));
     }
 
     /**
