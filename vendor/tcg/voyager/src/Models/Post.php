@@ -54,4 +54,10 @@ class Post extends Model
     {
         return $this->belongsTo(Voyager::modelClass('Category'));
     }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+
 }

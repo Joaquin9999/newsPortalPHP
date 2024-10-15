@@ -1,3 +1,7 @@
+@php
+    use TCG\Voyager\Facades\Voyager;
+@endphp
+
 @extends('layouts.main')
 
 @section('content')
@@ -25,14 +29,14 @@
     </div>
 </section>
 
-    <!-- End retroy layout blog posts -->
+<!-- End retroy layout blog posts -->
 
 <!-- Start posts-entry -->
 <section class="section posts-entry">
     <div class="container">
         <div class="row mb-4">
             <div class="col-sm-6">
-                <h2 class="posts-entry-title">Ciberseguridad    </h2>
+                <h2 class="posts-entry-title">Ciberseguridad </h2>
             </div>
             <div class="col-sm-6 text-sm-end">
                 <a href="category.html" class="read-more">View All</a>
@@ -45,12 +49,14 @@
                         <div class="col-md-12"> <!-- Usar col-md-12 para que ocupe toda la columna -->
                             <div class="blog-entry">
                                 <a href="{{ route('single', $post->slug) }}" class="img-link">
-                                    <img src="{{ Voyager::image($post->image) }}" alt="Image" class="img-fluid" style="max-width: 100%; height: auto;">
+                                    <img src="{{ Voyager::image($post->image) }}" alt="Image" class="img-fluid"
+                                        style="max-width: 100%; height: auto;">
                                 </a>
                                 <span class="date">{{ $post->created_at->format('M. d, Y') }}</span>
                                 <h2><a href="{{ route('single', $post->slug) }}">{{ $post->title }}</a></h2>
                                 <p>{{ Str::limit($post->excerpt, 100) }}</p>
-                                <p><a href="{{ route('single', $post->slug) }}" class="btn btn-sm btn-outline-primary">Read More</a></p>
+                                <p><a href="{{ route('single', $post->slug) }}" class="btn btn-sm btn-outline-primary">Read
+                                        More</a></p>
                             </div>
                         </div>
                     @endforeach
@@ -74,8 +80,8 @@
     </div>
 </section>
 
-    
-    <!-- End posts-entry -->
+
+<!-- End posts-entry -->
 
 <!-- Start posts-entry -->
 <section class="section posts-entry posts-entry-sm bg-light">
@@ -119,7 +125,8 @@
                                 <span class="date">{{ $post->created_at->format('M. d, Y') }}</span>
                                 <h2><a href="{{ route('single', $post->slug) }}">{{ $post->title }}</a></h2>
                                 <p>{{ Str::limit($post->excerpt, 100) }}</p>
-                                <p><a href="{{ route('single', $post->slug) }}" class="btn btn-sm btn-outline-primary">Read More</a></p>
+                                <p><a href="{{ route('single', $post->slug) }}" class="btn btn-sm btn-outline-primary">Read
+                                        More</a></p>
                             </div>
                         </div>
                     @endforeach
@@ -164,9 +171,11 @@
                                 <h2><a href="{{ route('single', $post->slug) }}">{{ $post->title }}</a></h2>
                                 <div class="post-meta align-items-center text-left clearfix">
                                     <figure class="author-figure mb-0 me-3 float-start">
-                                        <img src="images/person_1.jpg" alt="Image" class="img-fluid"> <!-- Usa el avatar asociado al author_id -->
+                                        <img src="images/person_1.jpg" alt="Image" class="img-fluid">
+                                        <!-- Usa el avatar asociado al author_id -->
                                     </figure>
-                                    <span class="d-inline-block mt-1">By <a href="#">{{ $post->author }}</a></span> <!-- Usa el nombre del autor -->
+                                    <span class="d-inline-block mt-1">By <a href="#">{{ $post->author }}</a></span>
+                                    <!-- Usa el nombre del autor -->
                                     <span>&nbsp;-&nbsp; {{ $post->created_at->format('F j, Y') }}</span>
                                 </div>
                                 <p>{{ $post->excerpt }}</p>
@@ -176,11 +185,11 @@
                     </div>
                 @endforeach
             </div>
-            
+
         </div>
 
     </div>
 </section>
 
-   
+
 @endsection

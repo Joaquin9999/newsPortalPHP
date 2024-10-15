@@ -1,3 +1,7 @@
+@php
+    use TCG\Voyager\Facades\Voyager;
+@endphp
+
 @extends('layouts.main')
 
 @section('content')
@@ -12,19 +16,21 @@
         <div class="row posts-entry">
             <div class="col-lg-8">
                 @foreach ($posts as $post)
-                <div class="blog-entry d-flex blog-entry-search-item">
-                    <a href="{{ route('single', ['slug' => $post->slug]) }}" class="img-link me-4">
-                        <img src="{{ Voyager::image($post->image) }}" alt="Image" class="img-fluid">
-                    </a>
-                    <div>
-                        <span class="date">{{ $post->created_at->format('M. d, Y') }} &bullet; <a href="#">{{ $post->category->name }}</a></span>
-                        <h2><a href="{{ route('single', ['slug' => $post->slug]) }}">{{ $post->title }}</a></h2>
-                        <p>{{ Str::limit($post->excerpt, 100) }}</p>
-                        <p><a href="{{ route('single', ['slug' => $post->slug]) }}" class="btn btn-sm btn-outline-primary">Read More</a></p>
+                    <div class="blog-entry d-flex blog-entry-search-item">
+                        <a href="{{ route('single', ['slug' => $post->slug]) }}" class="img-link me-4">
+                            <img src="{{ Voyager::image($post->image) }}" alt="Image" class="img-fluid">
+                        </a>
+                        <div>
+                            <span class="date">{{ $post->created_at->format('M. d, Y') }} &bullet; <a
+                                    href="#">{{ $post->category->name }}</a></span>
+                            <h2><a href="{{ route('single', ['slug' => $post->slug]) }}">{{ $post->title }}</a></h2>
+                            <p>{{ Str::limit($post->excerpt, 100) }}</p>
+                            <p><a href="{{ route('single', ['slug' => $post->slug]) }}"
+                                    class="btn btn-sm btn-outline-primary">Read More</a></p>
+                        </div>
                     </div>
-                </div>
-            @endforeach
-            
+                @endforeach
+
                 <div class="row text-start pt-5 border-top">
                     <div class="col-md-12">
                         <div class="custom-pagination">

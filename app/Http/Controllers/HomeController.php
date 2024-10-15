@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use TCG\Voyager\Models\Category;
 use TCG\Voyager\Models\Post;
-
+use TCG\Voyager\Models\User;
 class HomeController extends Controller
 {
     /**
@@ -13,9 +13,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $posts = Post::get(); 
+        $posts = Post::get();
 
-        return view('pages.home', compact( 'posts')); 
+        return view('pages.home', compact('posts'));
     }
 
     public function post($slug)
@@ -26,9 +26,9 @@ class HomeController extends Controller
     }
 
     public function author()
-{
-    return $this->belongsTo(User::class); // Suponiendo que el modelo de autor es User
-}
+    {
+        return $this->belongsTo(User::class); // Suponiendo que el modelo de autor es User
+    }
 
     /**
      * Show the form for creating a new resource.

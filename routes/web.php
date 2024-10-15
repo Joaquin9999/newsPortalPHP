@@ -5,6 +5,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\SearchController;
@@ -57,9 +58,11 @@ Route::get('/', [HomeController::class, 'index']);
 
 Route::get('/posts/{slug}', [HomeController::class, 'post'])->name('single');
 
-
 Route::get('/posts/{id}', [HomeController::class, 'show'])->name('posts.show');
 
 
 Route::get('/images/{filename}', [HomeController::class, 'showImage'])->name('image.show');
+
+// Ruta para almacenar un nuevo comentario
+Route::post('/posts/{postId}/comments', [CommentController::class, 'store'])->name('comments.store');
 
