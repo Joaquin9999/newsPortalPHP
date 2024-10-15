@@ -38,7 +38,7 @@ Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 Route::get('/search-result', [SearchController::class, 'index'])->name('search-result');
 
 //Ruta para pag Single
-Route::get('/single', [SingleController::class, 'index'])->name('single');
+Route::get('/single/{slug}', [SingleController::class, 'index'])->name('single');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -54,6 +54,9 @@ Route::group(['prefix' => 'admin'], function () {
 });
 
 Route::get('/', [HomeController::class, 'index']);
+
+Route::get('/posts/{slug}', [HomeController::class, 'post'])->name('single');
+
 
 Route::get('/posts/{id}', [HomeController::class, 'show'])->name('posts.show');
 

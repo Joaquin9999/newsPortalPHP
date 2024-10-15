@@ -6,7 +6,7 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <div class="heading">Category: Business</div>
+                <div class="heading">Category: {{ $posts->first()->category->name }}</div>
             </div>
         </div>
         <div class="row posts-entry">
@@ -25,7 +25,6 @@
                 </div>
             @endforeach
             
-
                 <div class="row text-start pt-5 border-top">
                     <div class="col-md-12">
                         <div class="custom-pagination">

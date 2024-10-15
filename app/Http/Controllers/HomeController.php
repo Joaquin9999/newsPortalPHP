@@ -18,6 +18,18 @@ class HomeController extends Controller
         return view('pages.home', compact( 'posts')); 
     }
 
+    public function post($slug)
+    {
+        $post = Post::where('slug', $slug)->firstOrFail();
+
+        return view('pages.post', ['post' => $post]);
+    }
+
+    public function author()
+{
+    return $this->belongsTo(User::class); // Suponiendo que el modelo de autor es User
+}
+
     /**
      * Show the form for creating a new resource.
      */
@@ -39,9 +51,7 @@ class HomeController extends Controller
      */
     public function show($slug)
     {
-        $post = Post::where('slug', $slug)->firstOrFail();
 
-        return view('pages.post', compact('post'));
     }
 
 

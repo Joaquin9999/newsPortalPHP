@@ -3,15 +3,20 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use TCG\Voyager\Models\Post;
 
 class SingleController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index($slug)
     {
-        return view('pages.post');
+         // Busca el post basado en el slug
+        $post = Post::where('slug', $slug)->firstOrFail();
+
+        // Retorna la vista con el post encontrado
+        return view('pages.post', ['post' => $post]);
     }
 
     /**
