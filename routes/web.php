@@ -63,6 +63,18 @@ Route::get('/posts/{id}', [HomeController::class, 'show'])->name('posts.show');
 
 Route::get('/images/{filename}', [HomeController::class, 'showImage'])->name('image.show');
 
-// Ruta para almacenar un nuevo comentario
-Route::post('/posts/{slug}/comments', [CommentController::class, 'store'])->name('comments.store');
+// Rutas para comentarios
+Route::post('/posts/{slug}/comments', [CommentController::class, 'store'])->name('comments.store'); // Crear un nuevo comentario
+
+// Ruta para editar un comentario
+Route::get('/comments/{id}/edit', [CommentController::class, 'edit'])->name('pages.edit');
+
+// Ruta para actualizar un comentario
+Route::put('/comments/{id}', [CommentController::class, 'update'])->name('comments.update');
+
+// Ruta para borrar un comentario
+Route::delete('/comments/{id}', [CommentController::class, 'destroy'])->name('comments.destroy');
+
+Route::resource('comments', CommentController::class);
+
 

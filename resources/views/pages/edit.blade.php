@@ -1,21 +1,22 @@
-@extends('layouts.app')
+@extends('layouts.main')
 
 @section('content')
 <div class="container">
-    <h1>Edit Comment</h1>
+    <h1>Editar Comentario</h1>
 
-    <form
-        action="{{ route('comments.update', ['id' => $post->id, 'slug' => $post->slug, 'commentId' => $comment->id]) }}"
-        method="POST">
+    <form action="{{ route('comments.update', $comment->id) }}" method="POST">
         @csrf
-        @method('PATCH')
+        @method('PUT')
 
         <div class="form-group">
-            <label for="content">Comment</label>
-            <textarea name="content" id="content" class="form-control" rows="5">{{ $comment->content }}</textarea>
+            <label for="body">Comentario</label>
+            <textarea name="body" id="body" cols="30" rows="10" class="form-control"
+                required>{{ $comment->body }}</textarea>
         </div>
 
-        <button type="submit" class="btn btn-primary">Update Comment</button>
+        <div class="form-group">
+            <input type="submit" value="Actualizar Comentario" class="btn btn-primary">
+        </div>
     </form>
 </div>
 @endsection

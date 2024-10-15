@@ -67,4 +67,5 @@ class Comment extends Model
         $this->body = $body; // Asegúrate de que la columna 'body' existe en la tabla de comentarios
         return $this->save();
     }
+
 }

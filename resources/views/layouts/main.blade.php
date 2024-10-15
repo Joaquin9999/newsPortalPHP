@@ -31,21 +31,16 @@
             <span class="visually-hidden">Loading...</span>
         </div>
     </div>
-
-
     <script src="{{ asset('backend/assets plantilla news/js/bootstrap.bundle.min.js')}}"></script>
     <script src="{{ asset('backend/assets plantilla news/js/tiny-slider.js')}}"></script>
-
     <script src="{{ asset('backend/assets plantilla news/js/flatpickr.min.js')}}"></script>
-
-
-
     <script src="{{ asset('backend/assets plantilla news/js/aos.js')}}"></script>
     <script src="{{ asset('backend/assets plantilla news/js/glightbox.min.js')}}"></script>
     <script src="{{ asset('backend/assets plantilla news/js/navbar.js')}}"></script>
     <script src="{{ asset('backend/assets plantilla news/js/counter.js')}}"></script>
     <script src="{{ asset('backend/assets plantilla news/js/custom.js')}}"></script>
-    <script src="{{ asset('js/comments.js') }}"></script>
+    <script src="{{ asset('resources/js/comments.js') }}"></script>
+    <script src="{{ asset('public/js/comments.js') }}"></script>
 
 </body>
 
