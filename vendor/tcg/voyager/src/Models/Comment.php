@@ -45,4 +45,26 @@ class Comment extends Model
     {
         return $this->belongsTo(Voyager::modelClass('User'), 'user_id', 'id');
     }
+
+    /**
+     * Método para eliminar el comentario.
+     *
+     * @return bool|null
+     */
+    public function deleteComment()
+    {
+        return $this->delete();
+    }
+
+    /**
+     * Método para actualizar el cuerpo del comentario.
+     *
+     * @param string $body
+     * @return bool
+     */
+    public function updateComment(string $body)
+    {
+        $this->body = $body; // Asegúrate de que la columna 'body' existe en la tabla de comentarios
+        return $this->save();
+    }
 }

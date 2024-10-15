@@ -64,5 +64,5 @@ Route::get('/posts/{id}', [HomeController::class, 'show'])->name('posts.show');
 Route::get('/images/{filename}', [HomeController::class, 'showImage'])->name('image.show');
 
 // Ruta para almacenar un nuevo comentario
-Route::post('/posts/{postId}/comments', [CommentController::class, 'store'])->name('comments.store');
+Route::post('/posts/{slug}/comments', [CommentController::class, 'store'])->name('comments.store');
 

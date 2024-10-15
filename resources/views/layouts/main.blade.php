@@ -39,11 +39,13 @@
     <script src="{{ asset('backend/assets plantilla news/js/flatpickr.min.js')}}"></script>
 
 
+
     <script src="{{ asset('backend/assets plantilla news/js/aos.js')}}"></script>
     <script src="{{ asset('backend/assets plantilla news/js/glightbox.min.js')}}"></script>
     <script src="{{ asset('backend/assets plantilla news/js/navbar.js')}}"></script>
     <script src="{{ asset('backend/assets plantilla news/js/counter.js')}}"></script>
     <script src="{{ asset('backend/assets plantilla news/js/custom.js')}}"></script>
+    <script src="{{ asset('js/comments.js') }}"></script>
 
 </body>
 

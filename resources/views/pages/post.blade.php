@@ -41,7 +41,18 @@
                                     <h3>{{ $comment->user->name }}</h3>
                                     <div class="meta">{{ $comment->created_at->format('F j, Y') }}</div>
                                     <p>{{ $comment->body }}</p>
-                                    <p><a href="#" class="reply rounded">Reply</a></p> <!-- Botón de Reply -->
+
+                                    <!-- Botón de Reply -->
+                                    <p><a href="#" class="reply rounded">Responder</a></p>
+
+                                    <!-- Comprobar si el usuario autenticado es el creador del comentario -->
+                                    @if (Auth::check() && Auth::id() === $comment->user_id)
+                                        <!-- Botón para editar el comentario -->
+                                        <button class="edit-comment" data-id="{{ $comment->id }}">Editar</button>
+
+                                        <!-- Botón para borrar el comentario -->
+                                        <button class="delete-comment" data-id="{{ $comment->id }}">Borrar</button>
+                                    @endif
                                 </div>
                             </li>
                         @endforeach
