@@ -44,7 +44,7 @@
                                     <!-- Formulario para responder -->
                                     <div class="reply-form" style="display:none;">
                                         @if (Auth::check())
-                                            <form action="{{ route('comments.store', $post->id) }}" method="POST"
+                                            <form action="{{ route('comments.store', $post->slug) }}" method="POST"
                                                 class="p-5 bg-light">
                                                 @csrf
                                                 <input type="hidden" name="parent_id" value="{{ $comment->id }}">
@@ -62,6 +62,7 @@
                                                 dejar un comentario.</p>
                                         @endif
                                     </div>
+
                                     <!-- Comprobar si el usuario autenticado es el creador del comentario -->
                                     @if (Auth::check() && Auth::id() === $comment->user_id)
                                         <!-- Botón para editar el comentario -->
@@ -85,11 +86,12 @@
                         @endforeach
                     </ul>
 
+                    <!-- Formulario para crear comentario -->
                     <div class="comment-form-wrap pt-5" style="padding-bottom: 50px;">
                         <h3 class="mb-5">Leave a comment</h3>
 
                         @if (Auth::check())
-                            <form action="{{ route('comments.store', $post->id) }}" method="POST" class="p-5 bg-light">
+                            <form action="{{ route('comments.store', $post->slug) }}" method="POST" class="p-5 bg-light">
                                 @csrf
                                 <div class="form-group">
                                     <label for="message">Message</label>

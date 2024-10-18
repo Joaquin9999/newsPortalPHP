@@ -16,6 +16,7 @@ return new class extends Migration {
             $table->unsignedInteger('post_id'); // ID del post relacionado
             $table->unsignedInteger('user_id'); // ID del usuario que hizo el comentario
             $table->text('body'); // Contenido del comentario
+            $table->unsignedInteger('parent_id')->nullable(); // ID del comentario padre
             $table->timestamps(); // Campos created_at y updated_at
 
             // Relación con posts
@@ -23,6 +24,9 @@ return new class extends Migration {
 
             // Relación con users (opcional, si quieres saber quién hizo el comentario)
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+
+            // Relación para el comentario padre (self-referencing)
+            $table->foreign('parent_id')->references('id')->on('comments')->onDelete('cascade');
         });
     }
 

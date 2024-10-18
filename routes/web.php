@@ -38,9 +38,6 @@ Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 //Ruta para pag Contact
 Route::get('/search-result', [SearchController::class, 'index'])->name('search-result');
 
-//Ruta para pag Single
-Route::get('/single/{slug}', [SingleController::class, 'index'])->name('single');
-
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -74,7 +71,4 @@ Route::put('/comments/{id}', [CommentController::class, 'update'])->name('commen
 
 // Ruta para borrar un comentario
 Route::delete('/comments/{id}', [CommentController::class, 'destroy'])->name('comments.destroy');
-
-Route::resource('comments', CommentController::class);
-
 

@@ -9,17 +9,23 @@ use TCG\Voyager\Facades\Voyager;
 
 class Comment extends Model
 {
-    protected $guarded = []; // No se especifican campos prohibidos
+    // Definir los atributos que se pueden asignar masivamente
+    protected $fillable = [
+        'post_id',
+        'body',
+        'user_id',
+        'parent_id',
+    ];
 
-    // Override el método save para asignar el user_id antes de guardar
+    /**
+     * Override el método save para asignar el user_id antes de guardar
+     */
     public function save(array $options = [])
     {
-        // Verifica si el usuario está autenticado
         if (Auth::check()) {
-            // Asigna el id del usuario autenticado
-            $this->user_id = Auth::id();
+            // Asigna el id del usuario autenticado si no está asignado
+            $this->user_id = $this->user_id ?? Auth::id();
         } else {
-            // Si el usuario no está autenticado, puedes lanzar una excepción
             throw new \Exception("El usuario debe estar autenticado para crear un comentario.");
         }
 
@@ -47,6 +53,26 @@ class Comment extends Model
     }
 
     /**
+     * Relación para obtener el comentario padre.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function parent()
+    {
+        return $this->belongsTo(self::class, 'parent_id');
+    }
+
+    /**
+     * Relación para obtener los comentarios hijos.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function replies()
+    {
+        return $this->hasMany(self::class, 'parent_id');
+    }
+
+    /**
      * Método para eliminar el comentario.
      *
      * @return bool|null
@@ -64,7 +90,7 @@ class Comment extends Model
      */
     public function updateComment(string $body)
     {
-        $this->body = $body; // Asegúrate de que la columna 'body' existe en la tabla de comentarios
+        $this->body = $body;
         return $this->save();
     }
 
