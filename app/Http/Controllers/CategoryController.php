@@ -10,12 +10,21 @@ class CategoryController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
-    {
-        $posts =  Post::where('category_id', 1)->orderBy("category_id")->get();
+    public function index(Request $request)
+{
+    $query = Post::where('category_id', 1);
 
-        return view("pages.category", compact('posts'));
+    // Filtrar por título si hay una búsqueda
+    if ($request->has('search') && $request->search != '') {
+        $query->where('title', 'LIKE', '%' . $request->search . '%');
     }
+
+    // Aplicar paginación
+    $posts = $query->orderBy("category_id")->paginate(2);
+
+    return view("pages.category", compact('posts'));
+}
+
 
     /**
      * Show the form for creating a new resource.

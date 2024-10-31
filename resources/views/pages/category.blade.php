@@ -33,27 +33,26 @@
 
                 <div class="row text-start pt-5 border-top">
                     <div class="col-md-12">
-                        <div class="custom-pagination">
-                            <span>1</span>
-                            <a href="#">2</a>
-                            <a href="#">3</a>
-                            <a href="#">4</a>
-                            <span>...</span>
-                            <a href="#">15</a>
-                        </div>
+                        <nav aria-label="Page navigation">
+                            <ul class="pagination justify-content-center">
+                                {{ $posts->links('pagination::bootstrap-4') }}
+                            </ul>
+                        </nav>
                     </div>
                 </div>
+                
 
             </div>
 
             <div class="col-lg-4 sidebar">
 
                 <div class="sidebar-box search-form-wrap mb-4">
-                    <form action="#" class="sidebar-search-form">
+                    <form action="{{ route('category') }}" method="GET" class="sidebar-search-form">
                         <span class="bi-search"></span>
-                        <input type="text" class="form-control" id="s" placeholder="Type a keyword and hit enter">
+                        <input type="text" name="search" class="form-control" id="s" placeholder="Type a keyword and hit enter" value="{{ request('search') }}">
                     </form>
                 </div>
+                
                 <!-- END sidebar-box -->
                 <div class="sidebar-box">
                     <h3 class="heading">Popular Posts</h3>

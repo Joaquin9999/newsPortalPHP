@@ -72,3 +72,6 @@ Route::put('/comments/{id}', [CommentController::class, 'update'])->name('commen
 // Ruta para borrar un comentario
 Route::delete('/comments/{id}', [CommentController::class, 'destroy'])->name('comments.destroy');
 
+Route::get('/category', [CategoryController::class, 'index'])->name('category');
+
+
