@@ -118,7 +118,7 @@
 
 <script>
     function toggleReplyForm(event) {
-        event.preventDefault(); // Evitar el comportamiento por defecto del enlace
+        event.preventDefault();
         const replyForm = event.target.closest('.comment').querySelector('.reply-form');
         replyForm.style.display = replyForm.style.display === 'none' || replyForm.style.display === '' ? 'block' : 'none';
     }

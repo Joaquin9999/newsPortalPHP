@@ -27,7 +27,7 @@ class HomeController extends Controller
 
     public function author()
     {
-        return $this->belongsTo(User::class); // Suponiendo que el modelo de autor es User
+        return $this->belongsTo(User::class);
     }
 
     /**

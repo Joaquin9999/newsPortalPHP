@@ -57,13 +57,13 @@ Route::get('/images/{filename}', [HomeController::class, 'showImage'])->name('im
 
 Route::post('/posts/{slug}/comments', [CommentController::class, 'store'])->name('comments.store'); // Crear un nuevo comentario
 
-// Ruta para editar un comentario
+// editar un comentario
 Route::get('/comments/{id}/edit', [CommentController::class, 'edit'])->name('pages.edit');
 
-// Ruta para actualizar un comentario
+//actualizar un comentario
 Route::put('/comments/{id}', [CommentController::class, 'update'])->name('comments.update');
 
-// Ruta para borrar un comentario
+//borrar un comentario
 Route::delete('/comments/{id}', [CommentController::class, 'destroy'])->name('comments.destroy');
 
 Route::get('/category', [CategoryController::class, 'index'])->name('category');

@@ -22,22 +22,21 @@ class CommentController extends Controller
         // Validación de los campos del comentario
         $request->validate([
             'body' => 'required|string|max:300',
-            'parent_id' => 'nullable|exists:comments,id', // Asegúrate de que el parent_id es opcional y existe en la tabla comments
+            'parent_id' => 'nullable|exists:comments,id',
         ]);
 
         // Buscar el post por su slug
-        $post = Post::where('slug', $slug)->first(); // Usamos first() en lugar de firstOrFail() para evitar excepciones no manejadas
+        $post = Post::where('slug', $slug)->first();
 
-        // Si no se encuentra el post, redirige con un mensaje de error
         if (!$post) {
             return redirect()->route('home')->with('error', 'El post no existe.');
         }
 
         // Crear el comentario
         $commentData = [
-            'post_id' => $post->id, // Relaciona el comentario con el post encontrado
-            'body' => $request->body, // Asigna el cuerpo del comentario
-            'user_id' => Auth::id(), // Guarda el ID del usuario autenticado
+            'post_id' => $post->id,
+            'body' => $request->body,
+            'user_id' => Auth::id(),
         ];
 
         // Si se está respondiendo a un comentario, asigna el parent_id
@@ -53,7 +52,6 @@ class CommentController extends Controller
 
         $comment = Comment::create($commentData);
 
-        // Verifica que el autor de la publicación no sea el mismo usuario que comenta
         if ($post->author_id !== Auth::id()) {
             $author = $post->authorId;
 
@@ -62,7 +60,7 @@ class CommentController extends Controller
             }
         }
 
-        // Redirigir a la vista del post con un mensaje de éxito
+        // Redirigir a la vista del post
         return redirect()->route('single', ['slug' => $slug])
             ->with('success', 'Comentario publicado con éxito.')
             ->header('Location', route('single', ['slug' => $slug]) . '#comment-' . $comment->id);
@@ -77,9 +75,8 @@ class CommentController extends Controller
 
     public function update(Request $request, $id)
     {
-        // Validar el contenido del comentario
         $request->validate([
-            'body' => 'required|string|max:255', // Ajusta según tus necesidades
+            'body' => 'required|string|max:255',
         ]);
 
         // Encontrar el comentario por su ID
@@ -91,15 +88,12 @@ class CommentController extends Controller
 
         // Verificar que el comentario tiene el campo post_id
         if (isset($comment->post_id)) {
-            // Encontrar el post asociado al comentario
-            $post = Post::findOrFail($comment->post_id); // Asegúrate de que el comentario tenga el campo post_id
+            $post = Post::findOrFail($comment->post_id);
 
-            // Redirigir al slug del post correspondiente
             return redirect()->route('single', $post->slug)
                 ->with('success', 'Comentario actualizado correctamente.');
         }
-
-        // Manejo de error en caso de que el post no se encuentre
+        // Manejo de error
         return redirect()->back()->withErrors('El post asociado no se encontró.');
     }
 
