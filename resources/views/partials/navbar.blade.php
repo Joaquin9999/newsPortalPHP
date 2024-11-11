@@ -10,11 +10,12 @@
                     <div class="col-8 text-center">
                         <ul class="js-clone-nav d-none d-lg-inline-block text-start site-menu mx-auto">
                             <li><a href="{{ route('home')}}" class="text-blue hover:text-gray-300">Inicio</a></li>
-                            <li><a href="{{ route('category')}}"
-                                    class="text-blue hover:text-gray-300">Ciberseguridad</a></li>
-                            <li><a href="{{ route('category')}}" class="text-blue hover:text-gray-300">Web</a></li>
-                            <li><a href="{{ route('category')}}" class="text-blue hover:text-gray-300">Software</a></li>
-                            <li><a href="{{ route('category')}}" class="text-blue hover:text-gray-300">I.A</a></li>
+                            <li><a href="{{ route('category', ['category_id' => 1]) }}">Ciberseguridad</a></li>
+                            <li><a href="{{ route('category', ['category_id' => 2]) }}">Web</a></li>
+                            <li><a href="{{ route('category', ['category_id' => 4]) }}">Software</a></li>
+                            <li><a href="{{ route('category', ['category_id' => 3]) }}">I.A</a></li>
+                            
+
                         </ul>
                     </div>
                     <div class="col-2 d-flex align-items-center justify-content-end">

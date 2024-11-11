@@ -70,3 +70,5 @@ Route::get('/category', [CategoryController::class, 'index'])->name('category');
 
 Route::get('/notificaciones/{notification}', [NotificationController::class, 'show'])->name('notificaciones.show');
 
+Route::get('/category/{category_id}', [CategoryController::class, 'index'])->name('category');
+

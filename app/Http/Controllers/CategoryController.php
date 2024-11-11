@@ -10,20 +10,23 @@ class CategoryController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(Request $request)
-{
-    $query = Post::where('category_id', 1);
-
-    // Filtrar por título si hay una búsqueda
-    if ($request->has('search') && $request->search != '') {
-        $query->where('title', 'LIKE', '%' . $request->search . '%');
+    public function index(Request $request, $category_id)
+    {
+        // Filtrar los posts por el ID de la categoría
+        $query = Post::where('category_id', $category_id);
+    
+        // Filtrar por título si hay una búsqueda
+        if ($request->has('search') && $request->search != '') {
+            $query->where('title', 'LIKE', '%' . $request->search . '%');
+        }
+    
+        // Aplicar paginación
+        $posts = $query->orderBy("created_at", "desc")->paginate(10);
+    
+        return view("pages.category", compact('posts'));
     }
+    
 
-    // Aplicar paginación
-    $posts = $query->orderBy("category_id")->paginate(2);
-
-    return view("pages.category", compact('posts'));
-}
 
 
     /**

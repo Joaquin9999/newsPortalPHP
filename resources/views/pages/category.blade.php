@@ -18,7 +18,7 @@
                 @foreach ($posts as $post)
                     <div class="blog-entry d-flex blog-entry-search-item">
                         <a href="{{ route('single', ['slug' => $post->slug]) }}" class="img-link me-4">
-                            <img src="{{ Voyager::image($post->image) }}" alt="Image" class="img-fluid">
+                            <img src="{{ str_replace("http://localhost/storage/", "", Voyager::image($post->image)) }}" alt="Image" class="img-fluid">
                         </a>
                         <div>
                             <span class="date">{{ $post->created_at->format('M. d, Y') }} &bullet; <a
@@ -47,7 +47,7 @@
             <div class="col-lg-4 sidebar">
 
                 <div class="sidebar-box search-form-wrap mb-4">
-                    <form action="{{ route('category') }}" method="GET" class="sidebar-search-form">
+                    <form action="{{ route('category', ['category_id' => $posts->first()->category_id ?? 1]) }}" method="GET" class="sidebar-search-form">
                         <span class="bi-search"></span>
                         <input type="text" name="search" class="form-control" id="s" placeholder="Type a keyword and hit enter" value="{{ request('search') }}">
                     </form>
@@ -65,7 +65,7 @@
                             @foreach ($popularPosts as $post)
                                 <li>
                                     <a href="{{ route('single', $post->slug) }}">
-                                        <img src="{{ Voyager::image($post->image) }}" alt="Image placeholder"
+                                        <img src="{{ str_replace("http://localhost/storage/", "", Voyager::image($post->image)) }}" alt="Image placeholder"
                                             class="me-4 rounded">
                                         <div class="text">
                                             <h4>{{ $post->title }}</h4>
@@ -82,10 +82,10 @@
                 <div class="sidebar-box">
                     <h3 class="heading">Categories</h3>
                     <ul class="categories">
-                        <li><a href="#">Ciberseguridad <span>(12)</span></a></li>
-                        <li><a href="#">Web <span>(22)</span></a></li>
-                        <li><a href="#">Software <span>(37)</span></a></li>
-                        <li><a href="#">I.A <span>(42)</span></a></li>
+                        <li><a href="#">Ciberseguridad <span>(25)</span></a></li>
+                        <li><a href="#">Web <span>(25)</span></a></li>
+                        <li><a href="#">Software <span>(25)</span></a></li>
+                        <li><a href="#">I.A <span>(25)</span></a></li>
                     </ul>
                 </div>
                 <!-- END sidebar-box -->
