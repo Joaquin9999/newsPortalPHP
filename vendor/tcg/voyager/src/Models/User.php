@@ -8,10 +8,11 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use TCG\Voyager\Contracts\User as UserContract;
 use TCG\Voyager\Tests\Database\Factories\UserFactory;
 use TCG\Voyager\Traits\VoyagerUser;
+use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable implements UserContract
 {
-    use VoyagerUser, HasFactory;
+    use VoyagerUser, HasFactory, Notifiable;
 
     protected $guarded = [];
 
@@ -34,7 +35,7 @@ class User extends Authenticatable implements UserContract
 
     public function getSettingsAttribute($value)
     {
-        return collect(json_decode((string)$value));
+        return collect(json_decode((string) $value));
     }
 
     public function setLocaleAttribute($value)

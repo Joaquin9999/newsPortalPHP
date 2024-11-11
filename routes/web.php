@@ -11,6 +11,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\SingleController;
 use Illuminate\Support\Facades\Route;
+use app\Http\Controllers\NotificationController;
 
 Route::get('/', function () {
     return view('pages.home');
@@ -20,22 +21,16 @@ Route::get('/dashboard', function () {
     return redirect()->route('voyager.dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-// Ruta para pag About
 Route::get('/about', [AboutController::class, 'index'])->name('about');
 
-//Ruta para pag Home
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
-//Ruta para pag Blog
 Route::get('/blog', [BlogController::class, 'index'])->name('blog');
 
-//Ruta para pag Category
 Route::get('/category', [CategoryController::class, 'index'])->name('category');
 
-//Ruta para pag Contact
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 
-//Ruta para pag Contact
 Route::get('/search-result', [SearchController::class, 'index'])->name('search-result');
 
 Route::middleware('auth')->group(function () {
@@ -60,7 +55,6 @@ Route::get('/posts/{id}', [HomeController::class, 'show'])->name('posts.show');
 
 Route::get('/images/{filename}', [HomeController::class, 'showImage'])->name('image.show');
 
-// Rutas para comentarios
 Route::post('/posts/{slug}/comments', [CommentController::class, 'store'])->name('comments.store'); // Crear un nuevo comentario
 
 // Ruta para editar un comentario
@@ -74,4 +68,4 @@ Route::delete('/comments/{id}', [CommentController::class, 'destroy'])->name('co
 
 Route::get('/category', [CategoryController::class, 'index'])->name('category');
 
-
+Route::get('/notificaciones/{notification}', [NotificationController::class, 'show'])->name('notificaciones.show');

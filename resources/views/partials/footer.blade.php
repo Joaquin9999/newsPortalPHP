@@ -4,9 +4,9 @@
         <div class="row">
             <div class="col-lg-4">
                 <div class="widget">
-                    <h3 class="mb-4">About</h3>
-                    <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there
-                        live the blind texts.</p>
+                    <h3 class="mb-4">About Us</h3>
+                    <p>Welcome to CiberTrends, your go-to destination for the latest in technology news and insights.
+                        Our mission is to keep you informed and engaged with the ever-evolving tech landscape.</p>
                 </div> <!-- /.widget -->
                 <div class="widget">
                     <h3>Social</h3>
@@ -48,7 +48,6 @@
                         <ul>
                             <li>
                                 <a href="">
-                                    <img src="images/img_1_sq.jpg" alt="Image placeholder" class="me-4 rounded">
                                     <div class="text">
                                         <h4>There’s a Cool New Way for Men to Wear Socks and Sandals</h4>
                                         <div class="post-meta">
@@ -59,7 +58,6 @@
                             </li>
                             <li>
                                 <a href="">
-                                    <img src="images/img_2_sq.jpg" alt="Image placeholder" class="me-4 rounded">
                                     <div class="text">
                                         <h4>There’s a Cool New Way for Men to Wear Socks and Sandals</h4>
                                         <div class="post-meta">
@@ -70,7 +68,6 @@
                             </li>
                             <li>
                                 <a href="">
-                                    <img src="images/img_3_sq.jpg" alt="Image placeholder" class="me-4 rounded">
                                     <div class="text">
                                         <h4>There’s a Cool New Way for Men to Wear Socks and Sandals</h4>
                                         <div class="post-meta">

@@ -6,11 +6,12 @@ use TCG\Voyager\Models\Comment;
 use TCG\Voyager\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Validator;
+use App\Notifications\NewCommentNotification;
+use TCG\Voyager\Models\User;
 
 class CommentController extends Controller
 {
-    public function store(Request $request, $slug) // Cambié $postId a $slug
+    public function store(Request $request, $slug)
     {
         // Validar que el usuario esté autenticado
         if (!Auth::check()) {
@@ -25,7 +26,12 @@ class CommentController extends Controller
         ]);
 
         // Buscar el post por su slug
-        $post = Post::where('slug', $slug)->firstOrFail(); // Buscar el post utilizando el slug
+        $post = Post::where('slug', $slug)->first(); // Usamos first() en lugar de firstOrFail() para evitar excepciones no manejadas
+
+        // Si no se encuentra el post, redirige con un mensaje de error
+        if (!$post) {
+            return redirect()->route('home')->with('error', 'El post no existe.');
+        }
 
         // Crear el comentario
         $commentData = [
@@ -36,15 +42,34 @@ class CommentController extends Controller
 
         // Si se está respondiendo a un comentario, asigna el parent_id
         // De lo contrario, parent_id se establece como null
-        $commentData['parent_id'] = $request->filled('parent_id') ? $request->parent_id : null;
+        if ($request->filled('parent_id')) {
+            $parentComment = Comment::find($request->parent_id);
+            if (!$parentComment) {
+                return redirect()->route('single', ['slug' => $slug])
+                    ->with('error', 'El comentario al que intentas responder no existe.');
+            }
+            $commentData['parent_id'] = $request->parent_id;
+        }
 
         // Guardar el comentario en la base de datos
-        Comment::create($commentData);
+        $comment = Comment::create($commentData);
+
+        // Verifica que el autor de la publicación no sea el mismo usuario que comenta
+        if ($post->author_id !== Auth::id()) {
+            // Obtén al autor del post utilizando la relación
+            $author = $post->authorId;
+
+            // Envía la notificación al autor del post con el post y el comentario
+            if ($author) {
+                $author->notify(new NewCommentNotification($comment, $post));
+            }
+        }
 
         // Redirigir a la vista del post con un mensaje de éxito
         return redirect()->route('single', ['slug' => $slug])
             ->with('success', 'Comentario publicado con éxito.');
     }
+
 
     public function edit($id)
     {

@@ -39,8 +39,6 @@
     <script src="{{ asset('backend/assets plantilla news/js/navbar.js')}}"></script>
     <script src="{{ asset('backend/assets plantilla news/js/counter.js')}}"></script>
     <script src="{{ asset('backend/assets plantilla news/js/custom.js')}}"></script>
-    <script src="{{ asset('resources/js/comments.js') }}"></script>
-    <script src="{{ asset('public/js/comments.js') }}"></script>
 
 </body>
 
