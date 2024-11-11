@@ -32,16 +32,18 @@ class CommentController extends Controller
             return redirect()->route('home')->with('error', 'El post no existe.');
         }
 
-        // Crear el comentario
+        // Verificar si el usuario es administrador
+        $isAdmin = Auth::user()->role_id == 1;
+
+        // Crear el comentario con is_approved basado en el rol
         $commentData = [
             'post_id' => $post->id,
             'body' => $request->body,
             'user_id' => Auth::id(),
-            'is_approved' => false,
+            'is_approved' => $isAdmin ? false : true,
         ];
 
         // Si se está respondiendo a un comentario, asigna el parent_id
-        // De lo contrario, parent_id se establece como null
         if ($request->filled('parent_id')) {
             $parentComment = Comment::find($request->parent_id);
             if (!$parentComment) {
@@ -53,20 +55,22 @@ class CommentController extends Controller
 
         $comment = Comment::create($commentData);
 
+        // Notificación al autor del post
         if ($post->author_id !== Auth::id()) {
-            $author = $post->authorId;
+            $author = User::find($post->author_id);
 
             if ($author) {
                 $author->notify(new NewCommentNotification($comment, $post));
             }
         }
 
+        $message = $isAdmin ? 'Comentario publicado con éxito.' : 'Comentario en espera de aprobación.';
+
         // Redirigir a la vista del post
         return redirect()->route('single', ['slug' => $slug])
-            ->with('success', 'Comentario publicado con éxito.')
+            ->with('success', $message)
             ->header('Location', route('single', ['slug' => $slug]) . '#comment-' . $comment->id);
     }
-
 
     public function edit($id)
     {

@@ -29,76 +29,86 @@
                     {!! $post->body !!}
                 </div>
                 <div class="pt-5 comment-wrap">
-                    <h3 class="mb-5 heading">{{ $post->comments()->count() }} Comments</h3>
+                    <h3 class="mb-5 heading">{{ $post->comments()->where('is_approved', true)->count() }} Comentarios
+                    </h3>
                     <ul class="comment-list">
                         @foreach ($post->comments as $comment)
-                            <li class="comment" id="comment-{{ $comment->id }}">
-                                <div class="comment-body">
-                                    <h3>{{ $comment->user->name }}</h3>
-                                    <div class="meta">{{ $comment->created_at->format('F j, Y') }}</div>
-                                    <p>{{ $comment->body }}</p>
-                                    <!-- Botón de Reply -->
-                                    <p><a href="#" class="reply rounded" onclick="toggleReplyForm(event)">Responder</a></p>
+                            @if ($comment->is_approved || (Auth::check() && Auth::id() === $comment->user_id))
+                                <li class="comment" id="comment-{{ $comment->id }}">
+                                    <div class="comment-body">
+                                        <h3>{{ $comment->user->name }}</h3>
+                                        <div class="meta">{{ $comment->created_at->format('F j, Y') }}</div>
 
-                                    <!-- Formulario para responder -->
-                                    <div class="reply-form" style="display:none;">
-                                        @if (Auth::check())
-                                            <form action="{{ route('comments.store', $post->slug) }}" method="POST"
-                                                class="p-5 bg-light">
+                                        {{-- Mostrar el mensaje de aprobación si no está aprobado --}}
+                                        @if (!$comment->is_approved)
+                                            <p class="text-warning">Tu comentario está en espera de aprobación.</p>
+                                        @endif
+
+                                        <p>{{ $comment->body }}</p>
+
+                                        <!-- Botón de Reply -->
+                                        <p><a href="#" class="reply rounded" onclick="toggleReplyForm(event)">Responder</a></p>
+
+                                        <!-- Formulario para responder -->
+                                        <div class="reply-form" style="display:none;">
+                                            @if (Auth::check())
+                                                <form action="{{ route('comments.store', $post->slug) }}" method="POST"
+                                                    class="p-5 bg-light">
+                                                    @csrf
+                                                    <input type="hidden" name="parent_id" value="{{ $comment->id }}">
+                                                    <div class="form-group">
+                                                        <label for="message">Message</label>
+                                                        <textarea name="body" id="message" cols="30" rows="3" class="form-control"
+                                                            required></textarea>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <input type="submit" value="Post Reply" class="btn btn-primary">
+                                                    </div>
+                                                </form>
+                                            @else
+                                                <p class="text-danger">Debes estar <a href="{{ route('login') }}">logueado</a> para
+                                                    dejar un comentario.</p>
+                                            @endif
+                                        </div>
+
+                                        <!-- Comprobar si el usuario autenticado es el creador del comentario -->
+                                        @if (Auth::check() && Auth::id() === $comment->user_id)
+                                            <!-- Botón para editar el comentario -->
+                                            <form action="{{ route('pages.edit', $comment->id) }}" method="GET"
+                                                style="display:inline;">
                                                 @csrf
-                                                <input type="hidden" name="parent_id" value="{{ $comment->id }}">
-                                                <div class="form-group">
-                                                    <label for="message">Message</label>
-                                                    <textarea name="body" id="message" cols="30" rows="3" class="form-control"
-                                                        required></textarea>
-                                                </div>
-                                                <div class="form-group">
-                                                    <input type="submit" value="Post Reply" class="btn btn-primary">
-                                                </div>
+                                                <button type="submit" class="edit-comment">Editar</button>
                                             </form>
-                                        @else
-                                            <p class="text-danger">Debes estar <a href="{{ route('login') }}">logueado</a> para
-                                                dejar un comentario.</p>
+
+                                            <!-- Botón para borrar el comentario -->
+                                            <form action="{{ route('comments.destroy', $comment->id) }}" method="POST"
+                                                style="display:inline;">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="delete-comment"
+                                                    onclick="return confirm('¿Estás seguro de que deseas borrar este comentario?');">Borrar</button>
+                                            </form>
                                         @endif
                                     </div>
-
-                                    <!-- Comprobar si el usuario autenticado es el creador del comentario -->
-                                    @if (Auth::check() && Auth::id() === $comment->user_id)
-                                        <!-- Botón para editar el comentario -->
-                                        <form action="{{ route('pages.edit', $comment->id) }}" method="GET"
-                                            style="display:inline;">
-                                            @csrf
-                                            <button type="submit" class="edit-comment">Editar</button>
-                                        </form>
-
-                                        <!-- Botón para borrar el comentario -->
-                                        <form action="{{ route('comments.destroy', $comment->id) }}" method="POST"
-                                            style="display:inline;">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="delete-comment"
-                                                onclick="return confirm('¿Estás seguro de que deseas borrar este comentario?');">Borrar</button>
-                                        </form>
-                                    @endif
-                                </div>
-                            </li>
+                                </li>
+                            @endif
                         @endforeach
                     </ul>
 
                     <!-- Formulario para crear comentario -->
                     <div class="comment-form-wrap pt-5" style="padding-bottom: 50px;">
-                        <h3 class="mb-5">Leave a comment</h3>
+                        <h3 class="mb-5">Deja un comentario</h3>
 
                         @if (Auth::check())
                             <form action="{{ route('comments.store', $post->slug) }}" method="POST" class="p-5 bg-light">
                                 @csrf
                                 <div class="form-group">
-                                    <label for="message">Message</label>
+                                    <label for="message">Mensaje</label>
                                     <textarea name="body" id="message" cols="30" rows="10" class="form-control"
                                         required></textarea>
                                 </div>
                                 <div class="form-group">
-                                    <input type="submit" value="Post Comment" class="btn btn-primary">
+                                    <input type="submit" value="Publicar Comentario" class="btn btn-primary">
                                 </div>
                             </form>
                         @else
