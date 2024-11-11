@@ -51,15 +51,12 @@ class CommentController extends Controller
             $commentData['parent_id'] = $request->parent_id;
         }
 
-        // Guardar el comentario en la base de datos
         $comment = Comment::create($commentData);
 
         // Verifica que el autor de la publicación no sea el mismo usuario que comenta
         if ($post->author_id !== Auth::id()) {
-            // Obtén al autor del post utilizando la relación
             $author = $post->authorId;
 
-            // Envía la notificación al autor del post con el post y el comentario
             if ($author) {
                 $author->notify(new NewCommentNotification($comment, $post));
             }
@@ -67,7 +64,8 @@ class CommentController extends Controller
 
         // Redirigir a la vista del post con un mensaje de éxito
         return redirect()->route('single', ['slug' => $slug])
-            ->with('success', 'Comentario publicado con éxito.');
+            ->with('success', 'Comentario publicado con éxito.')
+            ->header('Location', route('single', ['slug' => $slug]) . '#comment-' . $comment->id);
     }
 
 

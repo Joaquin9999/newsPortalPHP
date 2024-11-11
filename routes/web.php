@@ -11,7 +11,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\SingleController;
 use Illuminate\Support\Facades\Route;
-use app\Http\Controllers\NotificationController;
+use App\Http\Controllers\NotificationController;
 
 Route::get('/', function () {
     return view('pages.home');
@@ -69,3 +69,4 @@ Route::delete('/comments/{id}', [CommentController::class, 'destroy'])->name('co
 Route::get('/category', [CategoryController::class, 'index'])->name('category');
 
 Route::get('/notificaciones/{notification}', [NotificationController::class, 'show'])->name('notificaciones.show');
+

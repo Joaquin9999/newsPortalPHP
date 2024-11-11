@@ -32,12 +32,11 @@
                     <h3 class="mb-5 heading">{{ $post->comments()->count() }} Comments</h3>
                     <ul class="comment-list">
                         @foreach ($post->comments as $comment)
-                            <li class="comment">
+                            <li class="comment" id="comment-{{ $comment->id }}">
                                 <div class="comment-body">
                                     <h3>{{ $comment->user->name }}</h3>
                                     <div class="meta">{{ $comment->created_at->format('F j, Y') }}</div>
                                     <p>{{ $comment->body }}</p>
-
                                     <!-- Botón de Reply -->
                                     <p><a href="#" class="reply rounded" onclick="toggleReplyForm(event)">Responder</a></p>
 
@@ -124,4 +123,16 @@
         replyForm.style.display = replyForm.style.display === 'none' || replyForm.style.display === '' ? 'block' : 'none';
     }
 </script>
+@if(session('scrollToComment'))
+    <script>
+        window.onload = function () {
+            var commentId = '{{ session('scrollToComment') }}';
+            var commentElement = document.getElementById('comment-' + commentId);
+            if (commentElement) {
+                commentElement.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+    </script>
+@endif
+
 @endsection

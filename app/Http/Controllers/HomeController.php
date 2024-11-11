@@ -49,8 +49,10 @@ class HomeController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show($slug)
+    public function show($id)
     {
+        $post = Post::findOrFail($id);
+        return view('post.show', compact('post'));
 
     }
 

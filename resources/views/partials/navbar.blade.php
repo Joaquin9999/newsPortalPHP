@@ -43,7 +43,8 @@
                                                                     <ul class="dropdown">
                                                                         @forelse ($user->notifications as $notification)
                                                                             <li>
-                                                                                <a href="{{ route('notificaciones.show', $notification->id) }}">
+                                                                                <a
+                                                                                    href="{{ route('single', ['slug' => $notification->data['post_slug']]) }}#comment-{{ $notification->data['comment_id'] }}">
                                                                                     {{ $notification->data['message'] ?? 'Nueva notificación' }}
                                                                                     <p>{{ $notification->data['comment'] ?? '' }}</p>
                                                                                     <span
@@ -85,9 +86,3 @@
         </div>
     </div>
 </nav>
-<script src="{{ asset('js/notifications.js') }}"></script>
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        fetchNotifications();
-    });
-</script>

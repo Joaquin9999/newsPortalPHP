@@ -61,7 +61,7 @@ class NewCommentNotification extends Notification
             'message' => "Nuevo comentario en tu post: {$this->post->title}",
             'comment' => $this->comment->body,
             'comment_id' => $this->comment->id,
-            'post_id' => $this->post->id,
+            'post_slug' => $this->post->slug,
         ];
     }
 }
