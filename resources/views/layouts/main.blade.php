@@ -15,7 +15,6 @@
     </div>
 
     @include('partials.navbar')
-
     <main>
         @yield('content')<!-- Aquí se insertará el contenido específico de la página -->
     </main>

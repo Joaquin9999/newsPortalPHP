@@ -7,6 +7,10 @@
 @section('content')
 <section class="section bg-light">
     <div class="container">
+        @if(Auth::user()->role_id == 1)
+            <a href="{{ route('comments.pending') }}" class="read-more">Revisar Comentarios
+                Pendientes</a>
+        @endif
         <div class="row align-items-stretch retro-layout">
             @php
                 // Obtener 6 posts aleatorios
@@ -16,7 +20,8 @@
             @foreach ($randomPosts as $post)
                 <div class="col-md-4">
                     <a href="{{ route('single', $post->slug) }}" class="h-entry mb-30 v-height gradient">
-                        <div class="featured-img" style="background-image: url('{{ str_replace("http://localhost/storage/", "", Voyager::image($post->image)) }}');">
+                        <div class="featured-img"
+                            style="background-image: url('{{ str_replace("http://localhost/storage/", "", Voyager::image($post->image)) }}');">
                         </div>
                         <div class="text">
                             <span class="date">{{ $post->created_at->format('M. d, Y') }}</span>
@@ -49,8 +54,8 @@
                         <div class="col-md-12"> <!-- Usar col-md-12 para que ocupe toda la columna -->
                             <div class="blog-entry">
                                 <a href="{{ route('single', $post->slug) }}" class="img-link">
-                                    <img src="{{ str_replace("http://localhost/storage/", "", Voyager::image($post->image)) }}" alt="Image" class="img-fluid"
-                                        style="max-width: 100%; height: auto;">
+                                    <img src="{{ str_replace("http://localhost/storage/", "", Voyager::image($post->image)) }}"
+                                        alt="Image" class="img-fluid" style="max-width: 100%; height: auto;">
                                 </a>
                                 <span class="date">{{ $post->created_at->format('M. d, Y') }}</span>
                                 <h2><a href="{{ route('single', $post->slug) }}">{{ $post->title }}</a></h2>
@@ -91,7 +96,8 @@
                 <div class="col-md-6 col-lg-3">
                     <div class="blog-entry">
                         <a href="{{ route('single', $post->slug) }}" class="img-link">
-                            <img src="{{ str_replace("http://localhost/storage/", "", Voyager::image($post->image)) }}" alt="Image" class="img-fluid">
+                            <img src="{{ str_replace("http://localhost/storage/", "", Voyager::image($post->image)) }}"
+                                alt="Image" class="img-fluid">
                         </a>
                         <span class="date">{{ $post->created_at->format('M. d, Y') }}</span>
                         <h2><a href="{{ route('single', $post->slug) }}">{{ $post->title }}</a></h2>
@@ -120,7 +126,8 @@
                         <div class="col-md-6">
                             <div class="blog-entry">
                                 <a href="{{ route('single', $post->slug) }}" class="img-link">
-                                    <img src="{{ str_replace("http://localhost/storage/", "", Voyager::image($post->image)) }}" alt="Image" class="img-fluid">
+                                    <img src="{{ str_replace("http://localhost/storage/", "", Voyager::image($post->image)) }}"
+                                        alt="Image" class="img-fluid">
                                 </a>
                                 <span class="date">{{ $post->created_at->format('M. d, Y') }}</span>
                                 <h2><a href="{{ route('single', $post->slug) }}">{{ $post->title }}</a></h2>
@@ -165,7 +172,8 @@
                     <div class="col-lg-4 mb-4">
                         <div class="post-entry-alt">
                             <a href="{{ route('single', $post->slug) }}" class="img-link">
-                                <img src="{{ str_replace("http://localhost/storage/", "", Voyager::image($post->image)) }}" alt="Image" class="img-fluid">
+                                <img src="{{ str_replace("http://localhost/storage/", "", Voyager::image($post->image)) }}"
+                                    alt="Image" class="img-fluid">
                             </a>
                             <div class="excerpt">
                                 <h2><a href="{{ route('single', $post->slug) }}">{{ $post->title }}</a></h2>

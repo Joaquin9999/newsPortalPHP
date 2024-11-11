@@ -37,6 +37,7 @@ class CommentController extends Controller
             'post_id' => $post->id,
             'body' => $request->body,
             'user_id' => Auth::id(),
+            'is_approved' => false,
         ];
 
         // Si se está respondiendo a un comentario, asigna el parent_id
@@ -108,4 +109,29 @@ class CommentController extends Controller
 
         return redirect()->back()->with('error', 'Comentario no encontrado.');
     }
+    public function pending()
+    {
+        if (Auth::check() && Auth::user()->role_id != 1) {
+            return redirect()->route('home')->with('error', 'No tienes acceso a esta sección.');
+        }
+
+        // Obtener los comentarios pendientes de aprobación
+        $comments = Comment::where('is_approved', false)->paginate(10);
+        return view('pages.pending-comments', compact('comments'));
+    }
+
+    public function approve($id)
+    {
+        if (Auth::check() && Auth::user()->role_id != 1) {
+            return redirect()->route('home')->with('error', 'No tienes acceso a esta sección.');
+        }
+
+        // Aprobar el comentario
+        $comment = Comment::findOrFail($id);
+        $comment->is_approved = true;
+        $comment->save();
+
+        return redirect()->route('comments.pending')->with('success', 'Comentario aprobado exitosamente.');
+    }
+
 }
