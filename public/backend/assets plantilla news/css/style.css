@@ -3549,6 +3549,7 @@ fieldset:disabled .btn {
   color: #fff;
   background-color: #214252;
   border-color: #214252;
+  margin-bottom: 20px;
 }
 
 .btn-primary:hover {
@@ -14574,6 +14575,8 @@ textarea {
   font-size: 20px;
   color: #000;
   letter-spacing: .05rem;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .posts-entry .blog-entry .img-link {

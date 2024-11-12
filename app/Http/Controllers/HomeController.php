@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use TCG\Voyager\Models\Category;
 use TCG\Voyager\Models\Post;
 use TCG\Voyager\Models\User;
+use Illuminate\Support\Facades\Auth;
 class HomeController extends Controller
 {
     /**
@@ -62,7 +63,15 @@ class HomeController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $post = Post::findOrFail($id);
+
+        // Solo los editores pueden editar
+        if (Auth::user()->role_id !== 3) {
+            return redirect()->route('posts.show', $post->id)
+                ->with('error', 'No tienes permiso para editar este post.');
+        }
+
+        return view('pages.edit-post', compact('post'));
     }
 
     /**
@@ -70,7 +79,22 @@ class HomeController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'body' => 'required|string|max:5000',
+        ]);
+
+        $post = Post::findOrFail($id);
+
+        if (Auth::user()->role_id !== 3) {
+            return redirect()->route('single', $post->id)
+                ->with('error', 'No tienes permiso para editar este post.');
+        }
+
+        $post->body = $request->input('body');
+        $post->save();
+
+        return redirect()->route('single', $post->slug)
+            ->with('success', 'El post ha sido actualizado.');
     }
 
     /**
