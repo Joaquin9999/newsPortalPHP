@@ -97,7 +97,9 @@
                     <div class="blog-entry">
                         <a href="{{ route('single', $post->slug) }}" class="img-link">
                             <img src="{{ str_replace("http://localhost/storage/", "", Voyager::image($post->image)) }}"
-                                alt="Image" class="img-fluid">
+                                 alt="Image"
+                                 class="img-fluid"
+                                 style="width: 300px; height: 180px; object-fit: cover;">
                         </a>
                         <span class="date">{{ $post->created_at->format('M. d, Y') }}</span>
                         <h2><a href="{{ route('single', $post->slug) }}">{{ $post->title }}</a></h2>
@@ -127,7 +129,9 @@
                             <div class="blog-entry">
                                 <a href="{{ route('single', $post->slug) }}" class="img-link">
                                     <img src="{{ str_replace("http://localhost/storage/", "", Voyager::image($post->image)) }}"
-                                        alt="Image" class="img-fluid">
+                                         alt="Image"
+                                         class="img-fluid"
+                                         style="width: 600px; height: 360px; object-fit: cover;">
                                 </a>
                                 <span class="date">{{ $post->created_at->format('M. d, Y') }}</span>
                                 <h2><a href="{{ route('single', $post->slug) }}">{{ $post->title }}</a></h2>
@@ -173,17 +177,13 @@
                         <div class="post-entry-alt">
                             <a href="{{ route('single', $post->slug) }}" class="img-link">
                                 <img src="{{ str_replace("http://localhost/storage/", "", Voyager::image($post->image)) }}"
-                                    alt="Image" class="img-fluid">
+                                     alt="Image"
+                                     class="img-fluid"
+                                     style="width: 300px; height: 180px; object-fit: cover;">
                             </a>
                             <div class="excerpt">
                                 <h2><a href="{{ route('single', $post->slug) }}">{{ $post->title }}</a></h2>
                                 <div class="post-meta align-items-center text-left clearfix">
-                                    <figure class="author-figure mb-0 me-3 float-start">
-                                        <img src="images/person_1.jpg" alt="Image" class="img-fluid">
-                                        <!-- Usa el avatar asociado al author_id -->
-                                    </figure>
-                                    <span class="d-inline-block mt-1">By <a href="#">{{ $post->author }}</a></span>
-                                    <!-- Usa el nombre del autor -->
                                     <span>&nbsp;-&nbsp; {{ $post->created_at->format('F j, Y') }}</span>
                                 </div>
                                 <p>{{ $post->excerpt }}</p>
