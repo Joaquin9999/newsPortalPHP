@@ -20,7 +20,7 @@
                     </div>
                     <div class="col-2 d-flex align-items-center justify-content-end">
                         <form action="#" class="search-form me-3"
-                            style="flex: 1; max-width: 250px; margin-left: -150px;">
+                            style="flex: 1; max-width: 250px; margin-left: -230px;">
                             <input type="text" class="form-control" placeholder="Buscar..."
                                 style="width: 100%; font-size: 14px;">
                             <span class="bi-search"></span>
