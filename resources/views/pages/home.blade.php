@@ -50,7 +50,7 @@
         <div class="row g-3">
             <div class="col-md-8"> <!-- Aumentar espacio para el post -->
                 <div class="row g-3">
-                    @foreach ($posts->where('category_id', 1)->slice(1, 1) as $post) <!-- Solo un post destacado -->
+                    @foreach ($posts->where('category_id', 1)->slice(15,1) as $post) <!-- Solo un post destacado -->
                         <div class="col-md-12"> <!-- Usar col-md-12 para que ocupe toda la columna -->
                             <div class="blog-entry">
                                 <a href="{{ route('single', $post->slug) }}" class="img-link">
@@ -92,7 +92,7 @@
 <section class="section posts-entry posts-entry-sm bg-light">
     <div class="container">
         <div class="row">
-            @foreach ($posts->where('category_id', 4)->slice(0, 4) as $post) <!-- Muestra solo los primeros 4 posts -->
+            @foreach ($posts->where('category_id', 4)->slice(1, 4) as $post) <!-- Muestra solo los primeros 4 posts -->
                 <div class="col-md-6 col-lg-3">
                     <div class="blog-entry">
                         <a href="{{ route('single', $post->slug) }}" class="img-link">
@@ -122,7 +122,7 @@
         <div class="row g-3">
             <div class="col-md-9 order-md-2">
                 <div class="row g-3">
-                    @foreach ($posts->where('category_id', 2)->slice(1, 2) as $post) <!-- Mostrar los primeros 3 posts -->
+                    @foreach ($posts->where('category_id', 2)->slice(2, 2) as $post) <!-- Mostrar los primeros 3 posts -->
                         <div class="col-md-6">
                             <div class="blog-entry">
                                 <a href="{{ route('single', $post->slug) }}" class="img-link">
