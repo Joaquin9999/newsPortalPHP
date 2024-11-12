@@ -29,6 +29,9 @@
                     {!! $post->body !!}
                 </div>
                 <div class="pt-5 comment-wrap">
+                    @if(Auth::check() && Auth::user()->role_id === 3)
+                        <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-primary">Editar Post</a>
+                    @endif
                     <h3 class="mb-5 heading">{{ $post->comments()->where('is_approved', true)->count() }} Comentarios
                     </h3>
                     <ul class="comment-list">
@@ -38,14 +41,12 @@
                                     <div class="comment-body">
                                         <h3>{{ $comment->user->name }}</h3>
                                         <div class="meta">{{ $comment->created_at->format('F j, Y') }}</div>
-
                                         {{-- Mostrar el mensaje de aprobación si no está aprobado --}}
                                         @if (!$comment->is_approved)
                                             <p class="text-warning">Tu comentario está en espera de aprobación.</p>
                                         @endif
 
                                         <p>{{ $comment->body }}</p>
-
                                         <!-- Botón de Reply -->
                                         <p><a href="#" class="reply rounded" onclick="toggleReplyForm(event)">Responder</a></p>
 

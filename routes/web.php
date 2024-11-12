@@ -47,7 +47,8 @@ Route::group(['prefix' => 'admin'], function () {
 //Posts
 Route::get('/posts/{slug}', [HomeController::class, 'post'])->name('single');
 Route::get('/posts/{id}', [HomeController::class, 'show'])->name('posts.show');
-
+Route::get('/posts/{id}/edit', [HomeController::class, 'edit'])->name('posts.edit');
+Route::put('/posts/{id}', [HomeController::class, 'update'])->name('posts.update');
 
 Route::get('/images/{filename}', [HomeController::class, 'showImage'])->name('image.show');
 
