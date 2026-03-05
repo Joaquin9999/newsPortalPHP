@@ -16,14 +16,12 @@
         <div class="row posts-entry">
             <div class="col-lg-8">
                 @foreach ($posts as $post)
-                <div class="blog-entry d-flex blog-entry-search-item">
-                    <a href="{{ route('single', ['slug' => $post->slug]) }}" class="img-link me-4">
-                        <img src="{{ str_replace("http://localhost/storage/", "", Voyager::image($post->image)) }}" 
-                             alt="Image" 
-                             class="img-fluid" 
-                             style="width: 150px; height: 150px; object-fit: cover;">
-                    </a>
-                    <div>
+                    <div class="blog-entry d-flex blog-entry-search-item">
+                        <a href="{{ route('single', ['slug' => $post->slug]) }}" class="img-link me-4">
+                            <img src="{{ str_replace("http://127.0.0.1:8000/storage/", "", Voyager::image($post->image)) }}"
+                                alt="Image" class="img-fluid" style="width: 150px; height: 150px; object-fit: cover;">
+                        </a>
+                        <div>
                             <span class="date">{{ $post->created_at->format('M. d, Y') }} &bullet; <a
                                     href="#">{{ $post->category->name }}</a></span>
                             <h2><a href="{{ route('single', ['slug' => $post->slug]) }}">{{ $post->title }}</a></h2>
@@ -43,19 +41,21 @@
                         </nav>
                     </div>
                 </div>
-                
+
 
             </div>
 
             <div class="col-lg-4 sidebar">
 
                 <div class="sidebar-box search-form-wrap mb-4">
-                    <form action="{{ route('category', ['category_id' => $posts->first()->category_id ?? 1]) }}" method="GET" class="sidebar-search-form">
+                    <form action="{{ route('category', ['category_id' => $posts->first()->category_id ?? 1]) }}"
+                        method="GET" class="sidebar-search-form">
                         <span class="bi-search"></span>
-                        <input type="text" name="search" class="form-control" id="s" placeholder="Type a keyword and hit enter" value="{{ request('search') }}">
+                        <input type="text" name="search" class="form-control" id="s"
+                            placeholder="Type a keyword and hit enter" value="{{ request('search') }}">
                     </form>
                 </div>
-                
+
                 <!-- END sidebar-box -->
                 <div class="sidebar-box">
                     <h3 class="heading">Popular Posts</h3>
@@ -68,8 +68,8 @@
                             @foreach ($popularPosts as $post)
                                 <li>
                                     <a href="{{ route('single', $post->slug) }}">
-                                        <img src="{{ str_replace("http://localhost/storage/", "", Voyager::image($post->image)) }}" alt="Image placeholder"
-                                            class="me-4 rounded">
+                                        <img src="{{ str_replace("http://127.0.0.1:8000/storage/", "", Voyager::image($post->image)) }}"
+                                            alt="Image placeholder" class="me-4 rounded">
                                         <div class="text">
                                             <h4>{{ $post->title }}</h4>
                                             <div class="post-meta">
