@@ -1,28 +1,29 @@
 # Portal de Noticias de Tecnología(CiberTrends)
 
-Este es un **proyecto web de noticias de tecnología** construido con **Laravel 10**, que permite a los usuarios leer artículos, dejar comentarios moderados, y gestionar notificaciones. También tiene un panel de administración basado en **Voyager** para gestionar artículos, comentarios y usuarios.
+Este es un **proyecto web de noticias de tecnología** construido con **Laravel 11**, que permite a los usuarios leer artículos, dejar comentarios moderados, y gestionar notificaciones. También tiene un panel de administración basado en **Voyager** para gestionar artículos, comentarios y usuarios.
 
 
 # Descripción
 
 El portal de noticias de tecnología ofrece contenido actualizado sobre tecnología, con un sistema de comentarios moderados, notificaciones para los usuarios y filtrado de artículos por categorías. El sistema de administración basado en **Voyager** permite a los administradores gestionar el contenido de manera eficiente, mientras que los usuarios pueden interactuar con los posts.
 
-El proyecto está construido con **Laravel 10**, un potente framework PHP, y utiliza **Voyager** para el panel de administración y **Breeze** para el sistema de autenticación.
+El proyecto está construido con **Laravel 11**, un potente framework PHP, y utiliza **Voyager** para el panel de administración y **Breeze** para el sistema de autenticación.
 
 ## Tecnologías y Herramientas Usadas
 
 
--   **Laravel 10**: Framework PHP utilizado para el desarrollo del backend.
+-   **Laravel 11**: Framework PHP utilizado para el desarrollo del backend.
 -   **Voyager**: Paquete de administración para Laravel que facilita la creación de un panel de administración para gestionar el contenido.
 -   **Breeze**: Paquete de autenticación de Laravel para login, registro y gestión de sesiones de usuario.
 -   **MySQL**: Base de datos para almacenar posts, comentarios, usuarios y notificaciones.
--   **Bootstrap**: Framework CSS utilizado para el diseño y la maquetación del portal.
+-   **TailwindCSS**: Framework CSS utilizado para el diseño y la maquetación del portal.
+-   **Alpine.js**: Biblioteca JavaScript para interactividad ligera.
 -   **Blade**: Motor de plantillas de Laravel para las vistas.
--   **PHP 8.1 o superior**: Requerido para ejecutar Laravel.
+-   **PHP 8.2 o superior**: Requerido para ejecutar Laravel.
 -  **Apache Win64 VS17**: Requerido para ejecutar Laravel.
 
 ## Requisitos
--   **PHP**: 8.1 o superior.
+-   **PHP**: 8.2 o superior.
 -   **Composer**: Para gestionar las dependencias de PHP.
 -   **MySQL**: Base de datos para almacenamiento.
 -   **Node.js y NPM** (opcional si necesitas compilar assets o manejar el frontend).
