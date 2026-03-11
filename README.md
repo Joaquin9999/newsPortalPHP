@@ -67,6 +67,9 @@ El proyecto está construido con **Laravel 10**, un potente framework PHP, y uti
 
 Esto configurará las tablas necesarias en la base de datos e insertará datos de ejemplo, incluidos usuarios predeterminados para administración.
 
+### 6. Ejecutar el servidor
+`php artisan serve`
+
 ## Rutas y Roles
 El sistema utiliza tres roles:
 

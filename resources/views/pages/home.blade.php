@@ -21,7 +21,7 @@
                 <div class="col-md-4">
                     <a href="{{ route('single', $post->slug) }}" class="h-entry mb-30 v-height gradient">
                         <div class="featured-img"
-                            style="background-image: url('{{ str_replace("http://127.0.0.1:8000/storage/", "", Voyager::image($post->image)) }}');">
+                            style="background-image: url('{{ str_replace("http://localhost/storage/", "", Voyager::image($post->image)) }}');">
                         </div>
                         <div class="text">
                             <span class="date">{{ $post->created_at->format('M. d, Y') }}</span>
@@ -54,7 +54,7 @@
                         <div class="col-md-12"> <!-- Usar col-md-12 para que ocupe toda la columna -->
                             <div class="blog-entry">
                                 <a href="{{ route('single', $post->slug) }}" class="img-link">
-                                    <img src="{{ str_replace("http://127.0.0.1:8000/storage/", "", Voyager::image($post->image)) }}"
+                                    <img src="{{ str_replace("http://localhost/storage/", "", Voyager::image($post->image)) }}"
                                         alt="Image" class="img-fluid" style="max-width: 100%; height: auto;">
                                 </a>
                                 <span class="date">{{ $post->created_at->format('M. d, Y') }}</span>
@@ -96,7 +96,7 @@
                 <div class="col-md-6 col-lg-3">
                     <div class="blog-entry">
                         <a href="{{ route('single', $post->slug) }}" class="img-link">
-                            <img src="{{ str_replace("http://127.0.0.1:8000/storage/", "", Voyager::image($post->image)) }}"
+                            <img src="{{ str_replace("http://localhost/storage/", "", Voyager::image($post->image)) }}"
                                 alt="Image" class="img-fluid" style="width: 300px; height: 180px; object-fit: cover;">
                         </a>
                         <span class="date">{{ $post->created_at->format('M. d, Y') }}</span>
@@ -126,7 +126,7 @@
                         <div class="col-md-6">
                             <div class="blog-entry">
                                 <a href="{{ route('single', $post->slug) }}" class="img-link">
-                                    <img src="{{ str_replace("http://127.0.0.1:8000/storage/", "", Voyager::image($post->image)) }}"
+                                    <img src="{{ str_replace("http://localhost/storage/", "", Voyager::image($post->image)) }}"
                                         alt="Image" class="img-fluid"
                                         style="width: 600px; height: 360px; object-fit: cover;">
                                 </a>
@@ -173,7 +173,7 @@
                     <div class="col-lg-4 mb-4">
                         <div class="post-entry-alt">
                             <a href="{{ route('single', $post->slug) }}" class="img-link">
-                                <img src="{{ str_replace("http://127.0.0.1:8000/storage/", "", Voyager::image($post->image)) }}"
+                                <img src="{{ str_replace("http://localhost/storage/", "", Voyager::image($post->image)) }}"
                                     alt="Image" class="img-fluid" style="width: 300px; height: 180px; object-fit: cover;">
                             </a>
                             <div class="excerpt">
